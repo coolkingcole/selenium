@@ -522,7 +522,10 @@ LRESULT CALLBACK CookieWndProc(int nCode, WPARAM wParam, LPARAM lParam) {
           all_cookies.append(L"\n*\n");
         }
         INTERNETCOOKIE2* current_cookie = cookie_pointer + cookie_index;
-        std::wstring cookie_name = current_cookie->pwszName;
+        std::wstring cookie_name = L"";
+        if (current_cookie->pwszName) {
+          cookie_name = current_cookie->pwszName;
+        }
         std::wstring cookie_value = L"";
         if (current_cookie->pwszValue) {
           cookie_value = current_cookie->pwszValue;
